@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <h1>
+      Module 4 Exercitando Hash - Aula 13
+    </h1>
+
+    <script>
+      let quantidadeCandidato = Number(prompt("Digite quantidade de participantes"));
+
+      candidatos = [];
+
+      for (nome = 0; nome < quantidadeCandidato; nome++) {
+
+        grupoCandidato = {};
+
+        grupoCandidato.nome = prompt("Digite o nome do " + (nome + 1));
+
+        grupoCandidato.notas = [];
+
+        somaNotas = 0;
+        for (nota_index = 0; nota_index < 2; nota_index++) {
+          notasCandidato = Number(prompt("Digite a " + (nota_index + 1) + " nota " + grupoCandidato.nome));
+          somaNotas += notasCandidato;
+          grupoCandidato.notas.push(notasCandidato);
+        }
+        grupoCandidato.media = somaNotas / grupoCandidato.notas.length;
+
+        candidatos.push(grupoCandidato);
+      }
+
+      //Logica para adicionar os valores dentro do array
+
+      somaGeralMedia = 0
+      for (candidato_index = 0;candidato_index < candidatos.length;candidato_index++) {
+        
+        grupoCandidato = candidatos[candidato_index];
+        
+        document.write("<hr>O aluno " + grupoCandidato.nome + ", teve as notas: " + "<br><br>");
+
+        somaNotas = 0;
+
+        for ( nota_index = 0;nota_index < grupoCandidato.notas.length;nota_index++) {
+          // notasCandidato = grupoCandidato.nota[nota_index];
+          // somaNotas += notasCandidato;
+          document.write("<hr>Nota " +(nota_index + 1) +" = " +grupoCandidato.notas[nota_index] +"<br><br>");
+        }
+        somaGeralMedia += grupoCandidato.media;
+        document.write("<hr>A media do : " + grupoCandidato.nome + " e : " + grupoCandidato.media);
+        
+      }
+      mediaGeral = somaGeralMedia / candidatos.length
+      //=====MENSAGENS========
+      document.write("<hr>A quantidade de candidatos e de  : " + candidatos.length + "<br>");
+      document.write("<hr>A media da pesquisa e de : " + mediaGeral);
+
+      // CONDIONAL IF ELSE;
+      if (mediaGeral > 100) {
+        document.write("<hr>Parabens a media obtida foi maior que 100 : <b>" );
+      } else if ((mediaGeral >= 50) & (mediaGeral < 100)) {
+        document.write("<hr>Muito bem voce esta na media");
+      } else if (mediaGeral >= 20 && mediaGeral < 50) {
+        document.write("<hr>Muito bem ainda dentro de uma media considerada boa, mas precisa melhora pois tem : ");
+      } else {
+        document.write("<hr>Pessoal, voces estao abaixo da media, precisam estudar um pouco mais. ");
+      }
+    </script>
+  </body>
+</html>
